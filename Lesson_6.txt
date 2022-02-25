@@ -1,0 +1,18 @@
+SELECT number, name, started_at
+   ...> FROM streams JOIN courses
+   ...> ON courses.id = course_id;
+
+sqlite> SELECT name, SUM(students_amount)
+   ...> FROM courses JOIN streams
+   ...> ON courses.id = course_id
+   ...> GROUP BY name;
+
+sqlite> SELECT
+   ...> teachers.id,
+   ...> teachers.name,
+   ...> teachers.surname,
+   ...> AVG(grades.grade)
+   ...> FROM grades
+   ...> LEFT JOIN teachers
+   ...> ON teachers.id = teachers_id
+   ...> GROUP BY teachers_id;

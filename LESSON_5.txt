@@ -1,0 +1,52 @@
+1 задание
+SELECT
+number,
+'course_name',
+students_amount
+FROM streams;
+SELECT
+number,
+'course_name',
+students_amount
+FROM streams WHERE students_amount >= 40;
+
+2 задание
+SELECT MIN(perfomance)
+'grade',
+'course_name',
+'teacher_name'
+FROM grades;
+SELECT MIN(perfomance)
+'grade',
+(SELECT name FROM courses WGERE id = stream_id) AS course_name,
+(SELECT name || surname FROM teachers WHERE id = teachers_id) AS teacher_name
+FROM grades;
+
+3 задание
+SELECT
+(SELECT id FROM teachers WHERE surname = 'Савельев' AND name = 'Николай') AS teachers_id,
+AVG(perfomance)
+FROM grades WHERE (SELECT id FROM teachers WHERE surname = 'Савельев' AND name = 'Николай');
+
+4 задание
+SELECT
+number
+FROM streams
+WHERE id =
+(SELECT stream_id FROM grades WHERE teachers_id = (SELECT id FROM teachers WHERE surname = 'Петрова' AND name = 'Наталья'));
+SELECT
+stream_id,
+(SELECT name || surname FROM teachers WHERE id = teachers_id) AS teachers_name
+FROM grades
+WHERE perfomance < 4.8;
+SELECT
+number
+FROM streams
+WHERE id =
+(SELECT stream_id FROM grades WHERE teachers_id = (SELECT id FROM teachers WHERE surname = 'Петрова' AND name = 'Наталья'))
+UNION ALL
+SELECT
+stream_id,
+(SELECT name || surname FROM teachers WHERE id = teachers_id) AS teachers_name
+FROM grades
+WHERE perfomance < 4.8;

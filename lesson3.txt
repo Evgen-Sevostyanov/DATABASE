@@ -1,0 +1,9 @@
+(1, 165, '18.08.2020', 34),
+(2, 178, '02.10.2020', 37),
+(3, 203, '12.11.2020', 35),
+(4, 4, 210, '03.12.2020', 41);
+INSERT INTO streams (id, _id, number, started_at, students_amount) VALUES
+
+INSERT or REPLACE into streams VALUES (course_id);
+ALTER TABLE streams DROP COLUMN finished_at;
+ALTER TABLE streams DROP INDEX course_id;
